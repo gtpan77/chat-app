@@ -53,11 +53,6 @@ socket.on('newMessage', function(message) {
 
   jQuery('#messages').append(html);
   scrollToBottom();
-
-	// var li = jQuery('<li></li>');
-	// li.text(`${message.from} ${formattedTime}: ${message.text}`);
-
-	// jQuery('#messages').append(li);
 });
 
 socket.on('newLocationMessage', function(message) {
@@ -71,14 +66,6 @@ socket.on('newLocationMessage', function(message) {
 
   jQuery('#messages').append(html);
   scrollToBottom();
-
-	// var li = jQuery('<li></li>');
-	// var a = jQuery('<a target="_blank">My Location</a>');
-
-	// li.text(`${message.from} ${formattedTime}: `);
-	// a.attr('href', message.url);
-	// li.append(a);
-	// jQuery('#messages').append(li);
 });
 
 jQuery('#message-form').on('submit', function (e) {
@@ -87,7 +74,6 @@ jQuery('#message-form').on('submit', function (e) {
   var messageTextbox = jQuery('[name=message]');
 
 	socket.emit('createMessage', {
-		from: 'user',
 		text: messageTextbox.val()
 	}, function () {
 		messageTextbox.val('');
